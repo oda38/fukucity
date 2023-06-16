@@ -1,2 +1,8 @@
-<h1>Admin::Announcements#show</h1>
-<p>Find me in app/views/admin/announcements/show.html.erb</p>
+  <%= @announcement.title %>
+  <%= @announcement.content %>
+  
+  
+<%= link_to "編集する", edit_admin_announcement_path(@announcement.id), class: "btn btn-sm btn-success" %>
+        
+  
+  

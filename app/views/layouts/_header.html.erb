@@ -1,9 +1,9 @@
  <% if admin_signed_in? %>
     <li>
-      <%= link_to "お知らせを掲示する", new_admins_announcement_path %>
+      <%= link_to "お知らせを掲示する", admin_announcements_path %>
     </li>
     <li>
-      <%= link_to "投稿・コメント管理", admins_posts_path %>
+      <%= link_to "投稿・コメント管理", admin_posts_path %>
     </li>
     <li>
       <%= link_to "ログアウト", destroy_admin_session_path, method: :delete %>
@@ -20,8 +20,14 @@
       <%= link_to 'マイページ', user_path(current_user.id) %>
     </li>
     <li>
-      <%= link_to "ログアウト", destroy_user_session_path, method: :get %>
+      <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
     </li>
+    
+    <%= form_with(url: search_posts_path, local: true, method: :get, class: "rootpageSearchForm") do |f| %>
+      <%= f.text_field :keyword, placeholder: "キーワードを入力", id: 'Search_Form', class: "rootpageSearchForm__content" %>
+      <%= f.submit "検索", class: "rootpageSearchForm__bottum" %>
+    <% end %>
+      
   <% else %>
     <li>
       <%= link_to "新規登録", new_user_registration_path %>

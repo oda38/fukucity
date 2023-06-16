@@ -12,7 +12,7 @@
     </div>
     
     <div class="col-lg-2 offset-lg-6" >
-      <%= link_to "この投稿を削除する", admins_post_path(@post), data: { "turbo-method": :delete }, class: "btn btn-sm btn-success" %>
+      <%= link_to "この投稿を削除する", admin_post_path(@post), method: :delete, class: "btn btn-sm btn-success" %>
     </div>
   </div>
   
@@ -41,7 +41,7 @@
        <%= comment.comment %>
        
         <div>
-          <%= link_to "コメント削除", admins_post_comment_path(comment.post.id, comment.id), data: { "turbo-method": :delete } %>
+          <%= link_to "コメント削除", admin_post_comment_path(comment.post.id, comment.id), method: :delete %>
         </div>
       <% end %>
     </div>
