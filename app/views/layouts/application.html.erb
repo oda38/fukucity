@@ -10,19 +10,16 @@
 
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    
   </head>
   
   <header>
-    <nav class = "navbar navbar-expand-lg navbar-light  border-black border-bottom p-4">
-      <div class = "container">
-        <a class = "navbar-brand" href = "/">
-          <h2>ふくシティ</h2>
-        </a>
-        <div class ="d-flex flex-column">
-          <ul class = "navbar-nav ml-auto">
+    <nav class = "navbar navbar-expand-lg navbar-light border-black border-bottom p-4">
+      <div class="container">
+        <a class = "navbar-brand" href = "/"><h2>ふくシティ</h2></a>
+          <ul class = "navbar-nav">
             <%= render "layouts/header" %>
           </ul>
-        </div>
       </div>
     </nav>
   </header>

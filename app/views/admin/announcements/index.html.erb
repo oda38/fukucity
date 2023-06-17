@@ -31,7 +31,6 @@
     </div>
     
     <div class="col-md-8 offset-md-1">
-      <h4 class=mt-5>公開したお知らせ一覧</h4>
         
       <% @announcements.each do |announcement| %>
         <%= link_to admin_announcement_path(announcement.id), class: "text-dark text-decoration-none" do %>
@@ -39,6 +38,7 @@
         <% end %> 
           <%= announcement.content %>
       <% end %>
+      
     </div>
     
 

@@ -5,7 +5,7 @@ class Admin::AnnouncementsController < ApplicationController
   end
   
   def create
-    @announcement = Announcement.new(post_params)
+    @announcement = Announcement.new(announcement_params)
     if @announcement.save
      flash[:notice] = "You have created book successfully."
      redirect_to admin_announcements_path
