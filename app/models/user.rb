@@ -7,6 +7,10 @@ class User < ApplicationRecord
   def self.guest
     find_or_create_by!(email: 'guest@example.com') do |user|
       user.password = SecureRandom.urlsafe_base64
+      user.name = 'ゲスト'
+      user.name_kana = 'ゲスト' 
+      user.nickname = 'ゲスト'
+      user.telephone_number = '00000000001' 
     end
   end
   
@@ -29,5 +33,17 @@ class User < ApplicationRecord
     end
     profile_image.variant(resize_to_limit: [width, height]).processed
   end
-
+  
+  
+  
+  def self.looks(search, keyword)
+    if search == "perfect_match"
+      @user = User.where("nickname LIKE?", "#{keyword}")
+    elsif search == "partial_match"
+      @user = User.where("nickname LIKE?","%#{keyword}%")
+    else
+      @user = User.all
+    end
+  end
+  
 end

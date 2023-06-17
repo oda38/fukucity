@@ -1,8 +1,5 @@
 Rails.application.routes.draw do
   
-
-  
-  
 #ユーザー側  
   devise_for :users, skip: [:passwords], controllers: {
     registrations: "public/registrations",
@@ -10,8 +7,8 @@ Rails.application.routes.draw do
   }
   
   #ゲストログイン 
-  devise_scope :users do
-    post 'user/guest_sign_in', to: 'user/sessions#guest_sign_in'
+  devise_scope :user do
+    post 'user/guest_sign_in', to: 'public/sessions#guest_sign_in'
   end  
   
   #退会確認画面
@@ -33,10 +30,9 @@ Rails.application.routes.draw do
     resources :posts, only:[:new, :create, :index, :show, :edit, :update, :destroy] do
        resources :comments, only: [:create]
        resource :favorites, only: [:create, :destroy]
-       collection do
-         get 'search'
-       end
     end
+    
+    get "search" => "searches#search"
     get "search_tag"=>"posts#search_tag"
   end
   

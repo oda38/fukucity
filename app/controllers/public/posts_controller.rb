@@ -88,11 +88,7 @@ class Public::PostsController < ApplicationController
       
     end
   end
-  
-  def search
-    @posts = Post.search(params[:keyword])
-  end
-  
+ 
   
   def search_tag
     #検索結果画面でもタグ一覧表示
