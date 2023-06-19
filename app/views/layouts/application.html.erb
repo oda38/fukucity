@@ -13,18 +13,20 @@
     
   </head>
   
+ <body style="background-color:#FFFFEE;">
   <header>
-    <nav class = "navbar navbar-expand-lg navbar-light border-black border-bottom p-4">
+    <nav class="navbar navbar-expand-lg navbar-light border-black border-bottom p-4">
       <div class="container">
-        <a class = "navbar-brand" href = "/"><h2>ふくシティ</h2></a>
-          <ul class = "navbar-nav">
+        <a class="navbar-brand" href = "/"><h2>ふくシティ</h2></a>
+          <ul class="navbar-nav">
             <%= render "layouts/header" %>
           </ul>
       </div>
     </nav>
   </header>
-
-  <body style="background-color:#FFFFEE;">
+  <main class="mb-5">
     <%= yield %>
-  </body>
+  </main>
+  <footer class="border-top pt-5"></footer>
+ </body>
 </html>

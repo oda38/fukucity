@@ -24,12 +24,21 @@
       </div>
     </div> 
     
-    <div class="col-md-4"> 
-      <% @announcements.each do |announcement| %>
-       
-          <%= announcement.title %>
-          <%= announcement.content %>
-      <% end %>
-      </div> 
+    <div class="col-md-5">
+      <table class="table table-bordered">
+        <tr>
+          <th class="text-center">運営からのお知らせ</th>
+        </tr>
+        <tbody>
+          <td>
+          <% @announcements.each do |announcement| %>
+            <%= image_tag announcement.announcement_image, size: "100x100" %>
+            <%= announcement.title %>
+            <%= announcement.content %>
+          <% end %>
+          </td>
+       </tbody>
+      </table>
+    </div> 
   </div>  
 </div>

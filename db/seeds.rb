@@ -8,6 +8,6 @@
 
 
 Admin.create!(
-   email: 'hukucity@admin',
-   password: 'hukucitytest'
+   email: 'fukucity@admin',
+   password: 'fukucitytest'
 )
