@@ -6,35 +6,46 @@
     </div>
   </div>
     
-    
       <%= form_with model:@post do |f| %>
     　   <div class="form-group">
           <label class="text-secondary">タイトル</label><br>
           <%= f.text_field :title, :size=>"60" %>
+          <font color="red"><%= render "layouts/error_messages", model: @post, attribute: :title %></font>
         </div>
         
     　   <div class="form-group">
-          <label class="text-secondary">画像</label><br>
+          <label class="text-secondary">メイン画像</label><br>
           <%= f.file_field :image, accept: "image/*" %>
+          <font color="red"><%= render "layouts/error_messages", model: @post, attribute: :image %></font>
+        </div>
+    　 
+    　   <div class="form-group">
+          <label class="text-secondary">追加画像&emsp;(4枚まで追加することができます)</label><br>
+          <%= f.file_field :addition_images, multiple: true, accept: "image/*" %>
+          <font color="red"><%= render "layouts/error_messages", model: @post, attribute: :addition_images %></font>
         </div>
     　 
         <div class="form-group">
           <label class="text-secondary">投稿内容</label><br>
-          <%= f.text_area :content, class: 'form-control',size: "20x10" %>
+          <%= f.text_area :content, class: 'form-control',size: "20x10",
+          placeholder: "【例】①必要なもの：フェルト、ボンド、ファスナー（ダイソー）
+            ②アピールポイント：手先を使う練習におすすめ
+            ③所要時間：５分
+            ③作り方：ファスナーの大きさに合わせてフェルトを切ってボンドで貼るだけ！とっても簡単にできます！"   %>
+          <font color="red"><%= render "layouts/error_messages", model: @post, attribute: :content %></font>
         </div>
           
         <div class="form-group">
-          <label class="text-secondary">タグ (,で区切ると複数タグ登録できます)</label><br>
-          <%= f.text_field :name,class:"form-control"%>
+          <label class="text-secondary">タグ &emsp;(,で区切ると複数のタグを登録することができます)</label><br>
+          <%= f.text_field :name, class: "form-control"%>
         </div>
         
         
-  <div class="row float-end">
-    <div class="m-5">
-      <%= f.submit '投稿を公開', :name => 'release', class: 'mr-5 btn btn-sm btn-warning text-white' %>
+    <div class="d-flex justify-content-end mt-5">
+      <%= f.submit '投稿を公開', :name => 'release', class: 'mr-5 btn btn-sm btn-warning text-light' %>
       <%= f.submit '下書きに保存', :name => 'draft', class: 'mr-5 btn btn-sm btn-outline-secondary' %>
     </div>
-  </div>
+ 
         
      <% end %>
     

@@ -7,21 +7,30 @@
   </div>
   
   
+  
     <%= form_with model:@post do |f| %>
-    
     　   <div class="form-group">
           <label class="text-secondary">タイトル</label><br>
           <%= f.text_field :title, :size=>"60" %>
+          <font color="red"><%= render "layouts/error_messages", model: @post, attribute: :title %></font>
         </div>
         
     　   <div class="form-group">
-          <label class="text-secondary">画像</label><br>
+          <label class="text-secondary">メイン画像</label><br>
           <%= f.file_field :image, accept: "image/*" %>
+          <font color="red"><%= render "layouts/error_messages", model: @post, attribute: :image %></font>
+        </div>
+        
+        <div class="form-group">
+          <label class="text-secondary">追加画像※4枚まで追加できます。</label><br>
+          <%= f.file_field :addition_images, multiple: true, accept: "image/*" %>
+          <font color="red"><%= render "layouts/error_messages", model: @post, attribute: :addition_images %></font>
         </div>
     　 
         <div class="form-group">
           <label class="text-secondary">投稿内容</label><br>
           <%= f.text_area :content, class: 'form-control',size: "20x10" %>
+          <font color="red"><%= render "layouts/error_messages", model: @post, attribute: :content %></font>
         </div>
           
         <div class="form-group">
@@ -29,18 +38,15 @@
           <%= f.text_field :name, value: @tag_list, class:"form-control"%>
         </div>
       
-        
-      <div class="row mt-4">
-        <div class="form-inline mx-auto">
-           
+     
+        <div class="d-flex justify-content-end mt-5">
           <% if @post.is_draft == true %>
-            <%= f.submit "下書きを公開", :name => 'publicize_draft', class:'mr-5 btn btn-sm btn-warning' %>
+            <%= f.submit "下書きを公開", :name => 'publicize_draft', class:'mr-5 btn btn-sm btn-warning text-light' %>
             <%= f.submit "下書きを更新", :name => 'update_draft', class:'mr-5 btn btn-sm btn-outline-secondary' %>
           <% else %>
             <%= f.submit "投稿を更新", :name => 'update_post', class:'btn btn-sm btn-warning text-light' %>
           <% end %>
         </div>
-      </div>
     
     <% end %>
   

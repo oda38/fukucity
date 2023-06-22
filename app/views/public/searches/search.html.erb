@@ -1,4 +1,8 @@
-<h2>検索結果</h2>
+<div class="container">
+  
+  <div class="row mt-5">
+    <h5>検索結果</h5>
+  </div>
 
 <table class="table table-hover table-inverse">
   <% if @range == "ユーザー名" %>
@@ -14,11 +18,7 @@
     </tbody>
   <% else %>
     <tbody>
-      <% @posts.each do |post| %>
-        <tr>
-          <td><%= post.title %></td>
-        </tr>
-      <% end %>
+      <%= render 'public/posts/index', posts: @posts %>
       <% if @posts.count == 0 %>
         <p>該当する投稿は0件です。</p>
       <% end %>

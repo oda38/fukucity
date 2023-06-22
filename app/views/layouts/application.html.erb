@@ -6,18 +6,22 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     
-    <script src="https://kit.fontawesome.com/86b1bf15ce.js" crossorigin="anonymous"></script>
-
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css"/>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+    
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
     
+    <script src="https://kit.fontawesome.com/86b1bf15ce.js" crossorigin="anonymous"></script>
   </head>
   
- <body style="background-color:#FFFFEE;">
+ <body>
   <header>
-    <nav class="navbar navbar-expand-lg navbar-light border-black border-bottom p-4">
+    <nav class="navbar navbar-expand-lg navbar-light border-black border-bottom">
       <div class="container">
-        <a class="navbar-brand" href = "/"><h2>ふくシティ</h2></a>
+        <a class="navbar-brand" href = "/">
+          <img alt="logo" height="130" src="/assets/logo.jpg" width="150" ></a>
           <ul class="navbar-nav">
             <%= render "layouts/header" %>
           </ul>
@@ -25,8 +29,12 @@
     </nav>
   </header>
   <main class="mb-5">
+    <div class="main-container">
     <%= yield %>
+    </div>
   </main>
   <footer class="border-top pt-5"></footer>
+  
+  
  </body>
 </html>

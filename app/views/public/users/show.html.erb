@@ -1,3 +1,8 @@
+<div>
+  <%= flash[:notice] %>
+</div>
+
+
 <div class="container">
   
   <div class='row'>
@@ -15,15 +20,17 @@
           <% end %>
           
         <div class='mt-5'>
-          <% if @user.name != "ゲスト" %>
-            <%= link_to "会員情報を編集する", edit_user_path(@user), class: "btn btn-sm btn-block btn-success" %></br>
-           <% end %>
-            <%= link_to "いいねした投稿をみる", favorites_user_path(@user), class: "btn btn-sm btn-block btn-success" %></br>
-            <%= link_to "下書き一覧", confirm_user_path(@user), class: "btn btn-sm btn-block btn-success" %>
-         </div> 
+          <% if @user == current_user %>
+            <% if @user.name != "ゲスト" %>
+              <%= link_to "会員情報を編集する", edit_user_path(@user), class: "btn btn-sm btn-block btn-success" %></br>
+            <% end %>
+              <%= link_to "いいねした投稿をみる", favorites_user_path(@user), class: "btn btn-sm btn-block btn-success" %></br>
+              <%= link_to "下書き一覧", confirm_user_path(@user), class: "btn btn-sm btn-block btn-success" %>
+          <% end %>
+        </div> 
     </div> 
     
-    <div class="col-md-6">
+    <div class="col-md-7 offset-1">
       <h5 class ="mb-5">投稿一覧</h5>
         <%= render 'public/posts/index', posts: @posts %>
         <%= paginate @posts %>

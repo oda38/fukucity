@@ -5,14 +5,10 @@ class Public::UsersController < ApplicationController
   
   def show
     @user = User.find(params[:id])
-    @posts = current_user.posts.where(is_draft: :false).page(params[:page])
+    @posts = @user.posts.where(is_draft: :false).page(params[:page])
   end
 
   def edit
-    user = User.find(params[:id])
-     unless user.id == current_user.id
-    redirect_to user_path(current_user.id)
-     end
     @user = User.find(params[:id])
   end
   

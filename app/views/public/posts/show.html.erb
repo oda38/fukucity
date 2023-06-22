@@ -1,3 +1,5 @@
+
+    
 <div class='container'>
  
   <div class="row mt-5">
@@ -24,7 +26,27 @@
 
   <div class="row mt-5">
     <div class="col-lg-4" > 
-      <%= image_tag @post.image, size: "300x300" %>
+      <div class="swiper">
+        <div class="swiper-wrapper">
+           <div class="swiper-slide">
+             <% if @post.image.attached? %>
+                  <%= image_tag @post.image, size: "300x300", class: 'd-block mx-auto img-fluid' %>
+                <% else %>
+                  <%= image_tag 'no_image_irasutoya', size: "300x300", class: 'd-block mx-auto img-fluid' %>
+                <% end %>
+           </div>
+         <% if @post.addition_images.attached? %>
+          <% @post.addition_images.each do |addition_images| %>
+           <div class="swiper-slide">
+            <%= image_tag addition_images, size: "300x300", class: 'd-block mx-auto img-fluid' %>
+           </div>
+          <% end %>
+         <% end %>
+        </div>
+          <div class="swiper-pagination"></div>
+          <div class="swiper-button-prev"></div>
+          <div class="swiper-button-next"></div>
+      </div>
       
       <% if @post.is_draft == false %>
        <%= render 'form_favorite', post: @post %>
@@ -43,8 +65,8 @@
     
       <div class="col-lg-4 offset-lg-4">
         <% @post.comments.each do |comment| %>
-          <% if @user.profile_image.attached? %>
-            <%= image_tag @user.profile_image, size: "50x50" %>
+          <% if comment.user.profile_image.attached? %>
+            <%= image_tag comment.user.profile_image, size: "50x50" %>
           <% else %>
             <%= image_tag 'no_image_irasutoya', size: "50x50" %>
           <% end %>
@@ -63,3 +85,21 @@
   </div> 
   
 </div>
+
+<script>
+  const swiper = new Swiper('.swiper', {
+    //オプションの設定
+    loop: true,
+   
+    //ページネーション表示の設定
+    pagination: { 
+      el: '.swiper-pagination', //ページネーションの要素
+    },
+   
+    //ナビゲーションボタン（矢印）表示の設定
+    navigation: { 
+      nextEl: '.swiper-button-next', //「次へボタン」要素の指定
+      prevEl: '.swiper-button-prev', //「前へボタン」要素の指定
+    }
+  });
+</script>

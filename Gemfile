@@ -60,15 +60,16 @@ gem 'devise'
 
 gem 'bootstrap', '~> 5.1.3'
 gem 'kaminari','~> 1.2.1'
-
-gem 'jquery-rails'
+gem 'rails-i18n'
 
 gem 'dotenv-rails'
 group :production do
   gem 'mysql2'
 end
 
-
 gem "net-smtp"
 gem "net-pop"
 gem "net-imap"
+
+gem 'jquery-rails'
+
