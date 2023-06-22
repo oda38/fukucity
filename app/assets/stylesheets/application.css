@@ -15,13 +15,14 @@
  */
 
 main {
-  background-image: url('bg_image.jpg');
+  background-image: url('bg_image1.png');
   background-repeat: no-repeat;
   background-size: cover;
 }
 
-
-
+header {
+  background-color: #e4ab9b;
+}
 
 :root {
   --swiper-navigation-color: #ff7f50;

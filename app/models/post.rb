@@ -35,7 +35,6 @@ class Post < ApplicationRecord
   end
  
  
- 
   has_many :tag_maps, dependent: :destroy
   has_many :tags, through: :tag_maps
   
