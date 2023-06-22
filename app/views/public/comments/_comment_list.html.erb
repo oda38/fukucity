@@ -1,0 +1,25 @@
+<table class="table mt-3"> 
+  <% post.comments.each do |comment| %>
+    <tr>
+      <td>
+        <% if comment.user.profile_image.attached? %>
+         <%= image_tag comment.user.profile_image, size: "50x50", class:"mt-3 rounded-circle"; %>
+        <% else %>
+         <%= image_tag 'no_image_irasutoya', size: "50x50", class:"mt-3 rounded-circle"; %>
+        <% end %>
+      </td>
+      <td>
+        <div class="d-flex flex-column">
+          <div>
+            <%= comment.user.name %>
+            <small><%= comment.created_at.strftime('%Y/%m/%d') %></small>
+          </div>
+          <div>
+            <%= comment.comment %>
+          </div>
+        </div>
+      </td>
+    </tr>    
+  <% end %>
+</table> 
+  

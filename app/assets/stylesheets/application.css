@@ -24,6 +24,10 @@ header {
   background-color: #e4ab9b;
 }
 
+footer {
+  background-color: #e4ab9b;
+}
+
 :root {
   --swiper-navigation-color: #ff7f50;
   --swiper-pagination-color: #ff7f50;

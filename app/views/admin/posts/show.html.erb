@@ -1,7 +1,7 @@
 <div class='container'>
  
-  <div class="row mt-5">
-    <div class="col-lg-4">
+  <div class="row">
+    <div class="col-lg-4 mt-5">
       <% if @user.profile_image.attached? %>
         <%= image_tag @user.profile_image, size: "50x50" %>
       <% else %>
@@ -11,14 +11,34 @@
       <%= @user.nickname %>
     </div>
     
-    <div class="col-lg-2 offset-lg-6" >
+    <div class="col-lg-2 offset-lg-6 mt-5" >
       <%= link_to "この投稿を削除する", admin_post_path(@post), method: :delete, class: "btn btn-sm btn-success" %>
     </div>
   </div>
   
   <div class="row mt-5">
     <div class="col-lg-4" > 
-      <%= image_tag @post.image, size: "300x300" %>
+     <div class="swiper">
+        <div class="swiper-wrapper">
+           <div class="swiper-slide">
+            <% if @post.image.attached? %>
+              <%= image_tag @post.image, size: "420x420", class: 'd-block mx-auto img-fluid' %>
+            <% else %>
+              <%= image_tag 'no_image_irasutoya', size: "420x420", class: 'd-block mx-auto img-fluid' %>
+            <% end %>
+           </div>
+            <% if @post.addition_images.attached? %>
+              <% @post.addition_images.each do |addition_images| %>
+               <div class="swiper-slide">
+                <%= image_tag addition_images, size: "420x420", class: 'd-block mx-auto img-fluid' %>
+               </div>
+              <% end %>
+            <% end %>
+        </div>
+          <div class="swiper-pagination"></div>
+          <div class="swiper-button-prev"></div>
+          <div class="swiper-button-next"></div>
+      </div>
     </div>
   
     <div class="col-lg-4" >     
@@ -28,7 +48,7 @@
     </div>
   </div> 
   
-  <div class="row mt-5">
+  <div class="row mt-5 p-5">
     <div class="col-lg-4 offset-lg-4">
       <% @post.comments.each do |comment| %>
         <% if @user.profile_image.attached? %>

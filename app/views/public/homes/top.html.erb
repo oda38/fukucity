@@ -1,7 +1,7 @@
 <div class='container'>
-   <div class="row mt-5">
+   <div class="row">
      
-     <div class="col-md-7">
+     <div class="col-md-7 mt-5">
       <h1>ようこそ！</br>福祉のまち「ふくシティ」へ！</h1>
       
       <div class="mt-5">
@@ -13,7 +13,7 @@
         <p>みんなで作ろう　福祉のまち！ふくシティ</p>
       </div>
 
-      <div class="mt-5">
+      <div class="mt-5 p-5">
         <% if user_signed_in? %>
             <%= link_to "投稿する", new_post_path, class: "btn btn-sm btn-block btn-warning text-white" %>
         <% else %>
