@@ -33,7 +33,7 @@ class Public::PostsController < ApplicationController
   
   
   def index
-    @posts = Post.where(is_draft: :false).page(params[:page])
+    @posts = Post.where(is_draft: :false).page(params[:page]).per(8)
     @tag_list = Tag.joins(:posts).merge(Post.where(is_draft: false)).distinct
   end
 

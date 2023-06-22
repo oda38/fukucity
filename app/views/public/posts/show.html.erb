@@ -29,62 +29,70 @@
       <div class="swiper">
         <div class="swiper-wrapper">
            <div class="swiper-slide">
-             <% if @post.image.attached? %>
-                  <%= image_tag @post.image, size: "300x300", class: 'd-block mx-auto img-fluid' %>
-                <% else %>
-                  <%= image_tag 'no_image_irasutoya', size: "300x300", class: 'd-block mx-auto img-fluid' %>
-                <% end %>
+            <% if @post.image.attached? %>
+              <%= image_tag @post.image, size: "420x420", class: 'd-block mx-auto img-fluid' %>
+            <% else %>
+              <%= image_tag 'no_image_irasutoya', size: "420x420", class: 'd-block mx-auto img-fluid' %>
+            <% end %>
            </div>
-         <% if @post.addition_images.attached? %>
-          <% @post.addition_images.each do |addition_images| %>
-           <div class="swiper-slide">
-            <%= image_tag addition_images, size: "300x300", class: 'd-block mx-auto img-fluid' %>
-           </div>
-          <% end %>
-         <% end %>
+            <% if @post.addition_images.attached? %>
+              <% @post.addition_images.each do |addition_images| %>
+               <div class="swiper-slide">
+                <%= image_tag addition_images, size: "420x420", class: 'd-block mx-auto img-fluid' %>
+               </div>
+              <% end %>
+            <% end %>
         </div>
           <div class="swiper-pagination"></div>
           <div class="swiper-button-prev"></div>
           <div class="swiper-button-next"></div>
       </div>
       
-      <% if @post.is_draft == false %>
+    <% if @post.is_draft == false %>
        <%= render 'form_favorite', post: @post %>
-      <% end %>
+       
+       <div>
+        <%= form_with model: [@post, @comment] do |f| %>
+          <%= f.text_area :comment, :size=>"40", placeholder: "この投稿にコメントする" %>
+          <%= f.submit "送信する" %>
+        <% end %>
+       </div>
+       
+       <table class="table mt-3"> 
+        <% @post.comments.each do |comment| %>
+         <tr>
+           <td>
+            <% if comment.user.profile_image.attached? %>
+              <%= image_tag comment.user.profile_image, size: "50x50", class:"mt-3 rounded-circle"; %>
+            <% else %>
+              <%= image_tag 'no_image_irasutoya', size: "50x50", class:"mt-3 rounded-circle"; %>
+            <% end %>
+           </td>
+           <td>
+            <div class="d-flex flex-column">
+             <div>
+              <%= comment.user.name %>
+              <small><%= comment.created_at.strftime('%Y/%m/%d') %></small>
+             </div>
+             <div>
+              <%= comment.comment %>
+             </div>
+            </div>
+           </td>
+         </tr>    
+        <% end %>
+       </table> 
+    <% end %>
     </div>
  
-    <div class="col-lg-4" >     
+    <div class="col-lg-7 offset-1">     
       <h4>【<%= @post.title %>】</h4>
-      <p><%= @post.content %></p>
+      <p><%= h(@post.content).gsub(/\n|\r|\r\n/, "<br>").html_safe %></p>
         <%= @post.tags.map(&:name).join(',') %>
     </div>
   </div> 
-  
-  <div class="row mt-5">
-    <% if @post.is_draft == false %>
-    
-      <div class="col-lg-4 offset-lg-4">
-        <% @post.comments.each do |comment| %>
-          <% if comment.user.profile_image.attached? %>
-            <%= image_tag comment.user.profile_image, size: "50x50" %>
-          <% else %>
-            <%= image_tag 'no_image_irasutoya', size: "50x50" %>
-          <% end %>
-         <%= comment.user.name %>
-         <%= comment.created_at.strftime('%Y/%m/%d') %>
-         <%= comment.comment %>
-        <% end %>
-      </div>
-      <div>
-        <%= form_with model: [@post, @comment] do |f| %>
-          <%= f.text_area :comment, :size=>"30", placeholder: "この投稿にコメントする" %>
-          <%= f.submit "送信する" %>
-        <% end %>
-      </div>
-    <% end %>
-  </div> 
-  
 </div>
+
 
 <script>
   const swiper = new Swiper('.swiper', {

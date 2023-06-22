@@ -15,7 +15,7 @@
  */
 
 main {
-  background-image: image-url('bg_image.jpg');
+  background-image: url('bg_image.jpg');
   background-repeat: no-repeat;
   background-size: cover;
 }
@@ -24,6 +24,6 @@ main {
 
 
 :root {
-  --swiper-navigation-color: #ffffff;
-  --swiper-pagination-color: #ffffff;
+  --swiper-navigation-color: #ff7f50;
+  --swiper-pagination-color: #ff7f50;
 }

@@ -5,7 +5,7 @@ class Public::UsersController < ApplicationController
   
   def show
     @user = User.find(params[:id])
-    @posts = @user.posts.where(is_draft: :false).page(params[:page])
+    @posts = @user.posts.where(is_draft: :false).page(params[:page]).per(8)
   end
 
   def edit
