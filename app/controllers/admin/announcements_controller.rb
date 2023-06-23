@@ -1,7 +1,7 @@
 class Admin::AnnouncementsController < ApplicationController
   def index
     @announcement = Announcement.new
-    @announcements = Announcement.page(params[:page]).per(6)
+    @announcements = Announcement.page(params[:page]).per(4)
   end
   
   def create
@@ -37,7 +37,7 @@ class Admin::AnnouncementsController < ApplicationController
   def destroy
     @announcement = Announcement.find(params[:id])
     if @announcement.destroy
-     redirect_to admin_announcements_path
+     redirect_to admin_announcement_path
     else
      render :edit 
     end

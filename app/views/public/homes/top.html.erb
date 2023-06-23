@@ -1,7 +1,7 @@
 <div class='container'>
-   <div class="row">
+  <div class="row">
      
-     <div class="col-md-7 mt-5">
+    <div class="col-md-6 mt-5">
       <h1>ようこそ！</br>福祉のまち「ふくシティ」へ！</h1>
       
       <div class="mt-5">
@@ -24,21 +24,31 @@
       </div>
     </div> 
     
-    <div class="col-md-5">
-      <table class="table table-bordered">
-        <tr>
-          <th class="text-center">運営からのお知らせ</th>
-        </tr>
+    <div class="col-md-5 offset-1 mt-5">
+      <table class="table table-bordered table-striped table-light table-hover">
+        <thead>
+          <th class="text-center">運営からのお知らせ【<%= link_to "詳細はこちら", announcements_path %>】</th>
+          
+        </thead>
         <tbody>
-          <td>
-          <% @announcements.each do |announcement| %>
-            <%= image_tag announcement.announcement_image, size: "100x100" %>
-            <%= announcement.title %>
-            <%= announcement.content %>
-          <% end %>
-          </td>
-       </tbody>
+         <% @announcements.each do |announcement| %>
+          <tr>
+           <td class="text-center">
+             <%= image_tag announcement.announcement_image, size: "100x100" %>
+             <div class="d-flex flex-column">
+              <div>
+                <strong><%= announcement.title.truncate(25) %></strong>
+              </div>
+              <div>
+                <%= announcement.content.truncate(15) %>
+              </div>
+             </div>
+           </td>
+          </tr>
+         <% end %>
+        </tbody>
       </table>
+      
     </div> 
   </div>  
 </div>

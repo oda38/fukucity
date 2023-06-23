@@ -18,6 +18,7 @@ Rails.application.routes.draw do
   
   
   root to: 'public/homes#top'
+  get '/announcements' => 'public/homes#announcements'
   scope module: :public do
     resources :users, only:[:index, :show, :edit, :update] do
       resources :posts, only:[:index]
