@@ -1,7 +1,7 @@
 class Admin::AnnouncementsController < ApplicationController
   def index
     @announcement = Announcement.new
-    @announcements = Announcement.all
+    @announcements = Announcement.page(params[:page]).per(6)
   end
   
   def create
@@ -34,6 +34,14 @@ class Admin::AnnouncementsController < ApplicationController
     end
   end
   
+  def destroy
+    @announcement = Announcement.find(params[:id])
+    if @announcement.destroy
+     redirect_to admin_announcements_path
+    else
+     render :edit 
+    end
+  end
   
   
   def announcement_params

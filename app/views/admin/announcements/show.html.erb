@@ -13,7 +13,7 @@
     </div>  
     <div class="col-lg-7 offset-lg-1">  
       <p><strong>タイトル：</strong></br><%= @announcement.title %></p>
-      <p><strong>内容：</strong></br><%= @announcement.content %></p>
+      <p><strong>内容：</strong></br><%= h(@announcement.content).gsub(/\n|\r|\r\n/, "<br>").html_safe %></p>
     </div>
   </div>
   

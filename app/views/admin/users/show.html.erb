@@ -7,7 +7,7 @@
   <div class="row">
     <div class="col-md-6 mx-auto">
 
-  <table class='table table-hover table-inverse'>
+  <table class='table table-striped table-light table-hover'>
     <tbody>
       <tr>
         <td>会員ID</td>
@@ -50,7 +50,7 @@
     <% if @user.is_deleted %>
       <%= link_to "このユーザーを有効にする", admin_withdrawal_path(@user.id), method: :patch, class: "btn btn-success" %>
     <% else %>
-      <%= link_to 'このユーザーを退会させる', admins_withdrawal_path(@user.id), method: :patch, class: "btn btn-sm btn-block btn-danger"%>
+      <%= link_to 'このユーザーを退会させる', admin_withdrawal_path(@user.id), method: :patch, class: "btn btn-sm btn-block btn-danger"%>
     <% end %>
   </div>
 </div>

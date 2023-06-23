@@ -47,7 +47,7 @@ Rails.application.routes.draw do
     patch "withdrawal/:id" => "users#withdrawal", as: "withdrawal"
     
     resources :users, only:[:index, :show]
-    resources :announcements, only:[:index, :new, :create, :show, :edit, :update]
+    resources :announcements, only:[:index, :new, :create, :show, :edit, :update, :destroy]
     resources :posts, only:[:index, :show, :destroy] do
       resources :comments, only: [:destroy]
     end

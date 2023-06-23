@@ -65,7 +65,7 @@
    
  
     <div class="col-lg-7 offset-1">     
-      <h4>【<%= @post.title %>】</h4>
+      <h4><%= @post.title %></h4>
       <p><%= h(@post.content).gsub(/\n|\r|\r\n/, "<br>").html_safe %></p>
         <%= @post.tags.map(&:name).join(',') %>
     </div>

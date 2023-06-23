@@ -18,6 +18,13 @@ main {
   background-image: url('bg_image1.png');
   background-repeat: no-repeat;
   background-size: cover;
+  flex: 1;
+}
+
+body {
+  display: flex;
+  flex-flow: column;
+  min-height: 100vh;
 }
 
 header {
@@ -25,10 +32,12 @@ header {
 }
 
 footer {
-  background-color: #e4ab9b;
+    background-color: #e4ab9b;
 }
+
 
 :root {
   --swiper-navigation-color: #ff7f50;
   --swiper-pagination-color: #ff7f50;
 }
+

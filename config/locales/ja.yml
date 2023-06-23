@@ -8,9 +8,13 @@ ja:
         email: "メールアドレス"
       post:
         title: "タイトル"
-        content: "投稿内容"
+        content: "内容"
         image: "メイン画像"
         addition_images: "追加画像"
+      announcement:
+        title: "タイトル"
+        content: "内容"
+        announcement_image: "画像"
     errors:
       messages:
         invalid: "が正しくありません。"

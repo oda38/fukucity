@@ -3,10 +3,11 @@
     <h4 class="m-5 col-md-2" >会員一覧</h4>
   </div>
 
-  <table class='table table-hover table-inverse'>
-    <thead class="table-light">
+  <table class='table table-light table-bordered table-hover'>
+    <thead class="table-secondary">
       <tr>
         <th>会員ID</th>
+        <th>ニックネーム</th>
         <th>氏名</th>
         <th>メールアドレス</th>
         <th>ステータス</th>
@@ -17,7 +18,8 @@
     <tbody>
       <tr>
         <td><%= i+1 %></td>
-        <td><%= link_to user.name, admins_user_path(user.id) %></td>
+        <td><%= user.nickname %></td>
+        <td><%= link_to user.name, admin_user_path(user.id) %></td>
         <td><%= user.email %></td>
         <td>
           <% if user.is_deleted == true %>
