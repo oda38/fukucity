@@ -1,4 +1,7 @@
 class Public::UsersController < ApplicationController
+  before_action :authenticate_user!
+  
+  
   def index
     @users = User.where(is_deleted: false)
   end
@@ -47,7 +50,7 @@ class Public::UsersController < ApplicationController
   private
   
   def user_params
-    params.require(:user).permit(:profile_image, :name, :name_kana, :nickname, :telephone_number, :email,)
+    params.require(:user).permit(:profile_image, :name, :name_kana, :nickname, :telephone_number, :email)
   end
   
 end

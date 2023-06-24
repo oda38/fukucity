@@ -1,4 +1,7 @@
 class Admin::AnnouncementsController < ApplicationController
+  before_action :authenticate_admin!
+  
+  
   def index
     @announcement = Announcement.new
     @announcements = Announcement.page(params[:page]).per(4)

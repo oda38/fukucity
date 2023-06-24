@@ -1,4 +1,7 @@
 class Public::PostsController < ApplicationController
+  before_action :authenticate_user!, except: [:index,]
+  
+  
   def new
     @post = Post.new
   end
@@ -86,6 +89,15 @@ class Public::PostsController < ApplicationController
         render :edit, alert: "更新できませんでした。"
       end    
       
+    end
+  end
+  
+  def destroy
+    @post = Post.find(params[:id])
+    if @post.destroy
+      redirect_to posts_path
+    else
+      render 'edit'
     end
   end
  

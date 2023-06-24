@@ -1,4 +1,7 @@
 class Admin::UsersController < ApplicationController
+  before_action :authenticate_admin!
+  
+  
   def index
     @user = User.page(params[:page])
   end
@@ -18,4 +21,8 @@ class Admin::UsersController < ApplicationController
         end
     redirect_to admin_users_path
   end
+  
+
+  
+  
 end
