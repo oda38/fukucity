@@ -61,6 +61,7 @@ gem 'devise'
 gem 'bootstrap', '~> 5.1.3'
 gem 'kaminari','~> 1.2.1'
 gem 'rails-i18n'
+gem 'devise-i18n'
 
 gem 'dotenv-rails'
 group :production do

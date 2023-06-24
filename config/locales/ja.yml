@@ -2,10 +2,13 @@ ja:
   activerecord:
     attributes:
       user:
-        name: "表示名"
+        name: "名前"
         password: "パスワード"
         password_confirmation: "パスワード確認"
         email: "メールアドレス"
+        name_kana: "名前（カナ全角）"
+        nickname: "ニックネーム"
+        telephone_number: "電話番号"
       post:
         title: "タイトル"
         content: "内容"
@@ -19,4 +22,3 @@ ja:
       messages:
         invalid: "が正しくありません。"
         blank: "を入力してください。"
-        too_short: "%{attribute}は%{count}文字以上で入力してください。"

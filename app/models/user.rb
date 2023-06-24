@@ -19,6 +19,12 @@ class User < ApplicationRecord
     super && (is_deleted == false)
   end
   
+  validates :name, presence: true
+  validates :name_kana, presence: true, format: { with: /\A[ァ-ヴー]+\z/u }
+  validates :nickname, presence: true
+  validates :telephone_number, presence: true, format: { with: /\A\d{10,11}\z/ }
+  
+  
   has_many :posts, dependent: :destroy
   has_many :comments, dependent: :destroy
   has_many :favorites, dependent: :destroy

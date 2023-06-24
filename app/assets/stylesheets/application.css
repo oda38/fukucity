@@ -32,9 +32,12 @@ header {
 }
 
 footer {
-    background-color: #e4ab9b;
+  background-color: #e4ab9b;
 }
 
+.device-error {
+  color: red
+}
 
 :root {
   --swiper-navigation-color: #ff7f50;

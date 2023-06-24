@@ -12,9 +12,9 @@ Rails.application.routes.draw do
   end  
   
   #退会確認画面
-  get '/users/:id/unsubscribe' => 'publics/users#unsubscribe', as: 'unsubscribe'
+  get '/users/:id/unsubscribe' => 'public/users#unsubscribe', as: 'unsubscribe'
   #論理削除用のルーティング
-  patch '/users/:id/withdrawal' => 'publics/users#withdrawal', as: 'withdrawal'
+  patch '/users/:id/withdrawal' => 'public/users#withdrawal', as: 'withdrawal'
   
   
   root to: 'public/homes#top'

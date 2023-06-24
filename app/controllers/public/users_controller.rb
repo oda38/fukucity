@@ -1,6 +1,6 @@
 class Public::UsersController < ApplicationController
   def index
-    @users = User.all
+    @users = User.where(is_deleted: false)
   end
   
   def show
