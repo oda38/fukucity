@@ -15,7 +15,7 @@
 
       <div class="p-5">
         <% if user_signed_in? %>
-            <%= link_to "投稿する", new_post_path, class: "btn btn-sm btn-block btn-warning text-white" %>
+            <%= link_to "アイデアを投稿する", new_post_path, class: "btn btn-sm btn-block btn-warning text-white" %>
         <% else %>
             <%= link_to 'ゲストログイン（閲覧用）', user_guest_sign_in_path, method: :post, class: "btn btn-sm btn-block btn-secondary"%>
             <%= link_to "新規会員登録", new_user_registration_path, class: "btn btn-sm btn-block btn-primary" %>

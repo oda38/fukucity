@@ -17,13 +17,13 @@
            <%= image_tag 'no_image_irasutoya', size: "200x200" %>
           <% end %>
           
-        <div class='mt-5'>
+        <div class='mt-5 mb-5'>
           <% if @user == current_user %>
             <% if @user.name != "ゲスト" %>
-              <%= link_to "会員情報を編集する", edit_user_path(@user), class: "btn btn-sm btn-block btn-success" %></br>
+              <%= link_to "会員情報を編集する", edit_user_path(@user), class: "btn btn-sm btn-block btn-info text-light" %></br>
             <% end %>
               <%= link_to "いいねした投稿をみる", favorites_user_path(@user), class: "btn btn-sm btn-block btn-success" %></br>
-              <%= link_to "下書き一覧", confirm_user_path(@user), class: "btn btn-sm btn-block btn-success" %>
+              <%= link_to "下書き一覧", confirm_user_path(@user), class: "btn btn-sm btn-block btn-warning text-light" %>
           <% end %>
         </div> 
     </div> 

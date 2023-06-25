@@ -49,10 +49,10 @@
            </div>
           <% else %>
            <div class="p-2">
-            <%= link_to "この投稿を削除する", post_path(@post), method: :delete, class: "btn btn-sm btn-danger", "data-confirm" => "本当に削除しますか？" %>
+            <%= f.submit "投稿を更新", :name => 'update_post', class:'btn btn-sm btn-warning text-light' %>
            </div>
            <div class="p-2">
-            <%= f.submit "投稿を更新", :name => 'update_post', class:'btn btn-sm btn-warning text-light' %>
+            <%= link_to "この投稿を削除する", post_path(@post), method: :delete, class: "btn btn-sm btn-outline-danger", "data-confirm" => "本当に削除しますか？" %>
            </div>
           <% end %>
         </div>

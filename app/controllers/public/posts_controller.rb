@@ -36,7 +36,8 @@ class Public::PostsController < ApplicationController
   
   
   def index
-    @posts = Post.where(is_draft: :false).page(params[:page]).per(8)
+    @posts = Post.where(is_draft: :false)#改行
+                .joins(:user).merge(User.where(is_deleted: false)).order(created_at: :desc).page(params[:page]).per(8)
     @tag_list = Tag.joins(:posts).merge(Post.where(is_draft: false)).distinct
   end
 
@@ -75,7 +76,7 @@ class Public::PostsController < ApplicationController
       @post.attributes = post_params
       if @post.save(context: :publicize)
         @post.save_tag(tag_list)
-        redirect_to user_posts_path(current_user), notice: "更新しました！"
+        redirect_to post_path, notice: "更新しました！"
       else
         render :edit, alert: "更新できませんでした。"
       end   

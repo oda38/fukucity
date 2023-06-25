@@ -11,7 +11,7 @@
       <td>
         <div class="d-flex flex-column">
           <div>
-            <%= comment.user.name %>
+            <%= comment.user.nickname %>
             <small><%= comment.created_at.strftime('%Y/%m/%d') %></small>
           </div>
           <div>
@@ -19,6 +19,12 @@
           </div>
         </div>
       </td>
+      <% if comment.user == current_user %>
+      <td>
+        <%= link_to "コメント削除", post_comment_path(comment.post.id, comment.id), method: :delete, 
+          class: "btn btn-sm btn-outline-danger", "data-confirm" => "本当に削除しますか？" %>
+      </td>
+      <% end %>
     </tr>    
   <% end %>
 </table> 
