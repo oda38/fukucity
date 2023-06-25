@@ -42,9 +42,12 @@
   </div> 
 <% else %>
     <li class="nav-item mx-2">
+      <%= link_to '投稿一覧をチラ見する', posts_path %>
+    </li>
+    <li class="nav-item mx-2">
       <%= link_to "新規登録", new_user_registration_path %>
     </li>
     <li class="nav-item mx-2">
-      <%= link_to "ログイン", new_user_session_path %>
+      <%= link_to "ユーザーログイン", new_user_session_path %>
     </li>
 <% end %>

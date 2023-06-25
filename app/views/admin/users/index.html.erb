@@ -1,9 +1,9 @@
 <div class="container">
   <div class="row">
-    <h4 class="m-5 col-md-2" >会員一覧</h4>
+    <h4 class="mt-5 col-md-2" >会員一覧</h4>
   </div>
 
-  <table class='table table-light table-bordered table-hover'>
+  <table class='table table-light table-bordered table-hover mx-auto'>
     <thead class="table-secondary">
       <tr>
         <th>会員ID</th>
@@ -32,7 +32,7 @@
     </tbody>
     <% end %>
   </table>
-  <div class="pagination justify-content-center mt-2">
+  <div class="pagination justify-content-center mt-2 mb-5">
     <%= paginate @user %>
   </div>
 </div>

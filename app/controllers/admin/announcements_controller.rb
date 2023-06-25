@@ -40,7 +40,7 @@ class Admin::AnnouncementsController < ApplicationController
   def destroy
     @announcement = Announcement.find(params[:id])
     if @announcement.destroy
-     redirect_to admin_announcement_path
+     redirect_to admin_announcements_path
     else
      render :edit 
     end

@@ -48,9 +48,10 @@
  
   <div class="row my-3 mx-3">
     <% if @user.is_deleted %>
-      <%= link_to "このユーザーを有効にする", admin_withdrawal_path(@user.id), method: :patch, class: "btn btn-success" %>
+      <%= link_to "このユーザーを有効にする", admin_withdrawal_path(@user.id), method: :patch, class: "btn  btn-block btn-success", "data-confirm" => "有効にしますか？" %>
     <% else %>
-      <%= link_to 'このユーザーを退会させる', admin_withdrawal_path(@user.id), method: :patch, class: "btn btn-sm btn-block btn-danger"%>
+      <%= link_to 'このユーザーを退会させる', admin_withdrawal_path(@user.id), method: :patch, class: "btn btn-sm btn-block btn-danger", "data-confirm" => "本当に退会させますか？"%>
     <% end %>
+    
   </div>
 </div>

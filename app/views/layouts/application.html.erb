@@ -25,6 +25,10 @@
             <%= image_tag "logo.png", style: "width: 150px; height: 150px;"%>
           <% end %>
           
+          <% if user_signed_in? %>
+              ようこそ、<%= current_user.nickname %>さん！
+          <% end %>
+          
           <ul class="navbar-nav">
             <%= render "layouts/header" %>
           </ul>

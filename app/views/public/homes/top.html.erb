@@ -2,18 +2,18 @@
   <div class="row">
      
     <div class="col-md-6 mt-5">
-      <h1>ようこそ！</br>福祉のまち「ふくシティ」へ！</h1>
+      <h1>ようこそ！</br>ふくシティへ&nbsp;<i class="fas fa-seedling"></i></h1>
       
       <div class="mt-5">
         <p>ふくシティで、皆さんの作ったものやアイデアを共有しませんか？</p>
         <p>「デイサービスのレクリエーションが毎回同じものになってしまう…」</p>
         <p>「今月の保育園の壁面飾り何にしよう…忙しくて作る時間がない…」</p>
         <p>「子どものために市販のおもちゃをアレンジしたい！」</p>
-        <p>そんな思いを持った福祉人たちで集まり、アイデアを共有することで、助け合いの輪を広げましょう♪</p>
-        <p>みんなで作ろう　福祉のまち！ふくシティ</p>
+        <p>あなたのアイデアが、誰かの助けになります！アイデアを共有して、福祉の輪を広げましょう♪</p>
+        <p>みんなで作ろう　福祉のまち！ふくシティ&nbsp;<i class="fas fa-dove"></i></p>
       </div>
 
-      <div class="mt-5 p-5">
+      <div class="p-5">
         <% if user_signed_in? %>
             <%= link_to "投稿する", new_post_path, class: "btn btn-sm btn-block btn-warning text-white" %>
         <% else %>
@@ -37,7 +37,7 @@
              <%= image_tag announcement.announcement_image, size: "100x100" %>
              <div class="d-flex flex-column">
               <div>
-                <strong><%= announcement.title.truncate(25) %></strong>
+                【<%= announcement.title.truncate(25) %>】
               </div>
               <div>
                 <%= announcement.content.truncate(15) %>
