@@ -102,7 +102,7 @@ class Public::PostsController < ApplicationController
   def destroy
     @post = Post.find(params[:id])
     if @post.destroy
-      flash[:notice] = "削除しました"
+      flash[:notice] = "削除しました。"
       redirect_to posts_path
     else
       render 'edit'
