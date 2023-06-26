@@ -9,6 +9,7 @@ class Admin::PostsController < ApplicationController
   def show
     @post = Post.find(params[:id])
     @user = @post.user
+    @post_tags = @post.tags
   end
   
   def destroy

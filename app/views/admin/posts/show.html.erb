@@ -8,7 +8,8 @@
         <%= image_tag 'no_image_irasutoya', size: "50x50", class:"mt-3 rounded-circle"; %>
       <% end %>
       
-      <%= @user.nickname %>
+      <%= link_to admin_user_path(@user.id), class: "text-dark" do %>
+          <%= @user.nickname %><% end %>
     </div>
     
     <div class="col-lg-2 offset-lg-6 mt-5" >
@@ -70,9 +71,13 @@
     </div>
   
     <div class="col-lg-7 p-5" >
-      <h4><%= @post.title %></h4>
+      <h4>【<%= @post.title %>】</h4>
+      <div>
+        <% @post_tags.each do |tag| %>
+          <i class="fa-sharp fa-solid fa-tag"> <%= tag.name %></i>
+        <% end %>
+      </div>
       <p><%= h(@post.content).gsub(/\n|\r|\r\n/, "<br>").html_safe %></p>
-        <%= @post.tags.map(&:name).join(',') %>
     </div>
     
   </div> 
