@@ -40,7 +40,8 @@ class Public::PostsController < ApplicationController
   def index
     @posts = Post.where(is_draft: :false)#改行
                 .joins(:user).merge(User.where(is_deleted: false)).order(created_at: :desc).page(params[:page]).per(8)
-    @tag_list = Tag.joins(:posts).merge(Post.where(is_draft: false)).distinct
+    @tag_list = Tag.joins(posts: :user).merge(Post.where(is_draft: false))#改行
+                .merge(User.where(is_deleted: false)).distinct
   end
 
 

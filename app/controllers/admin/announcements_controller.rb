@@ -10,10 +10,10 @@ class Admin::AnnouncementsController < ApplicationController
   def create
     @announcement = Announcement.new(announcement_params)
     if @announcement.save
-     flash[:notice] = "You have created book successfully."
+     flash[:notice] = "公開しました"
      redirect_to admin_announcements_path
     else
-     @announcements = Announcement.all
+     @announcements = Announcement.page(params[:page]).per(4)
      render :index
     end
   end
@@ -29,7 +29,7 @@ class Admin::AnnouncementsController < ApplicationController
   def update
     @announcement = Announcement.find(params[:id])
     if @announcement.update(announcement_params)
-     flash[:notice] = "You have updated book successfully." 
+     flash[:notice] = "更新しました" 
      redirect_to admin_announcement_path
     else
      @announcements = Announcement.all
