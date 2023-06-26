@@ -3,7 +3,7 @@ class Admin::PostsController < ApplicationController
   
   
   def index
-    @posts = Post.where(is_draft: :false).page(params[:page]).per(10)
+    @posts = Post.where(is_draft: :false).order(created_at: :desc).page(params[:page]).per(10)
   end
   
   def show

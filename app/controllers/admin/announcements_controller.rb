@@ -4,7 +4,7 @@ class Admin::AnnouncementsController < ApplicationController
   
   def index
     @announcement = Announcement.new
-    @announcements = Announcement.page(params[:page]).per(4)
+    @announcements = Announcement.order(created_at: :desc).page(params[:page]).per(4)
   end
   
   def create
@@ -13,7 +13,7 @@ class Admin::AnnouncementsController < ApplicationController
      flash[:notice] = "公開しました"
      redirect_to admin_announcements_path
     else
-     @announcements = Announcement.page(params[:page]).per(4)
+     @announcements = Announcement.order(created_at: :desc).page(params[:page]).per(4)
      render :index
     end
   end

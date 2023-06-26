@@ -7,7 +7,7 @@ class Public::SearchesController < ApplicationController
       @users = User.looks(params[:search], params[:keyword]).where(is_deleted: false)
     else
       @posts = Post.looks(params[:search], params[:keyword]).where(is_draft: false)#改行
-                  .joins(:user).merge(User.where(is_deleted: false))
+                  .joins(:user).merge(User.where(is_deleted: false)).order(created_at: :desc)
     end
   end
   
