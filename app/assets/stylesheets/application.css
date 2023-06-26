@@ -47,3 +47,8 @@ footer {
   --swiper-pagination-color: #ff7f50;
 }
 
+.notice {
+  background-color: #ede4e1;
+  color: #be8f68;
+  text-indent: 40px
+ }

@@ -18,6 +18,7 @@ class Public::PostsController < ApplicationController
       @post.is_draft = false
       if @post.save(context: :publicize)
         @post.save_tag(tag_list)
+        flash[:notice] = "投稿を公開しました！"
         redirect_to user_posts_path(current_user)
       else
         render :new
@@ -27,6 +28,7 @@ class Public::PostsController < ApplicationController
       @post.is_draft = true
       if @post.update(is_draft: :true)
         @post.save_tag(tag_list)
+        flash[:notice] = "下書きを保存しました！"
         redirect_to confirm_user_path(current_user)
       else
         render :new
@@ -65,10 +67,11 @@ class Public::PostsController < ApplicationController
       @post.attributes = post_params.merge(is_draft: false)
       if @post.save(context: :publicize)
         @post.save_tag(tag_list)
-        redirect_to user_posts_path(current_user), notice: "下書きの投稿を公開しました！"
+        flash[:notice] = "公開しました！"
+        redirect_to user_posts_path(current_user)
       else
         @post.is_draft = true
-        render :edit, alert: "公開できませんでした。"
+        render :edit
       end
       
   # ②公開済みの投稿を更新する場合
@@ -76,18 +79,20 @@ class Public::PostsController < ApplicationController
       @post.attributes = post_params
       if @post.save(context: :publicize)
         @post.save_tag(tag_list)
-        redirect_to post_path, notice: "更新しました！"
+        flash[:notice] = "更新しました！"
+        redirect_to post_path
       else
-        render :edit, alert: "更新できませんでした。"
+        render :edit
       end   
       
   # ③下書きを下書きに更新する場合
     else
       if @post.update(post_params)
         @post.save_tag(tag_list)
-        redirect_to confirm_user_path(current_user), notice: "下書きを更新しました！"
+        flash[:notice] = "更新しました！"
+        redirect_to confirm_user_path(current_user)
       else
-        render :edit, alert: "更新できませんでした。"
+        render :edit
       end    
       
     end
@@ -96,6 +101,7 @@ class Public::PostsController < ApplicationController
   def destroy
     @post = Post.find(params[:id])
     if @post.destroy
+      flash[:notice] = "削除しました"
       redirect_to posts_path
     else
       render 'edit'
