@@ -69,7 +69,7 @@
       <h4>【<%= @post.title %>】</h4>
       <div>
         <% @post_tags.each do |tag| %>
-          <i class="fa-sharp fa-solid fa-tag"> <%= tag.name %></i>
+          <i class="fa-sharp fa-solid fa-tag"><%= tag.name %></i>
         <% end %>
       </div>
       <p class="mt-4"><%= h(@post.content).gsub(/\n|\r|\r\n/, "<br>").html_safe %></p>

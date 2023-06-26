@@ -40,8 +40,8 @@ class Public::PostsController < ApplicationController
   def index
     @posts = Post.where(is_draft: :false)#改行
                 .joins(:user).merge(User.where(is_deleted: false)).order(created_at: :desc).page(params[:page]).per(8)
-    @tag_list = Tag.joins(posts: :user).merge(Post.where(is_draft: false))#改行
-                .merge(User.where(is_deleted: false)).distinct
+    @tag_list = Tag.joins(posts: :user)#改行
+                .merge(Post.where(is_draft: false)).merge(User.where(is_deleted: false)).distinct
   end
 
 
@@ -111,13 +111,13 @@ class Public::PostsController < ApplicationController
  
   
   def search_tag
-    #検索結果画面でもタグ一覧表示
-    @tag_list = Tag.joins(posts: :user).merge(Post.where(is_draft: false))#改行
-                .merge(User.where(is_deleted: false)).distinct
+    @tag_list = Tag.joins(posts: :user)#改行
+                .merge(Post.where(is_draft: false)).merge(User.where(is_deleted: false)).distinct
     #検索されたタグを受け取る
     @tag = Tag.find(params[:tag_id])
     #検索されたタグに紐づく投稿を表示
-    @posts = @tag.posts.page(params[:page]).per(8)
+    @posts = @tag.posts.where(is_draft: :false)#改行
+                .joins(:user).merge(User.where(is_deleted: false)).order(created_at: :desc).page(params[:page]).per(8)
   end
   
   
